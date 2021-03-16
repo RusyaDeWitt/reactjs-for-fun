@@ -9,12 +9,13 @@ class Tables extends Component {
       name: "",
       surname: "",
       age: "",
-      students: students
+      students: students,
     }
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangeSurname = this.handleChangeSurname.bind(this)
     this.handleChangeAge = this.handleChangeAge.bind(this)
   }
+
 
   handleChangeName(event){
     event.preventDefault();

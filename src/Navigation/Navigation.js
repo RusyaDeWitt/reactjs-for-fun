@@ -14,6 +14,12 @@ class Navigation extends Component {
             <Nav.Link>
               <Link to="/Table"> Table</Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link to="/Cards"> Cards</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/Pokemons"> Pokemons</Link>
+            </Nav.Link>
           </Nav>
         </Navbar>
         </div>

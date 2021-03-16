@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Container , Row , Col , Spinner , Carousel , Nav, ProgressBar} from 'react-bootstrap'
+import { Container , Row , Col , Carousel , Nav, ProgressBar} from 'react-bootstrap'
 
 import './WelcomePage.css'
 
@@ -71,9 +71,6 @@ class WelcomePage extends  Component {
             <button onClick={()=>{addProgress()}}> +10 </button>
             <button onClick={()=>{minusProgress()}}> -10 </button>
               <h1>Welcome!</h1>
-                  <Spinner animation="border" role="status">
-                    <span className="sr-only">Loading...</span>
-                  </Spinner>
               <Row>
               <h2>
                 A warm welcome to the office! Your remarkable skills will be a great addition to our team and the company.
