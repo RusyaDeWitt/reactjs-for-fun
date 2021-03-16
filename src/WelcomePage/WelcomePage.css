@@ -1,0 +1,9 @@
+h1 {
+  letter-spacing: 3px;
+  font-family: "Monaco", monospace;
+  color: #1d87d1;
+}
+
+.register-form {
+  display: block;
+}
