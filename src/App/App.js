@@ -1,6 +1,6 @@
 import Navigation from '../Navigation/Navigation';
 import {BrowserRouter as Router , Switch , Route , Link} from 'react-router-dom'
-import WelcomePage from '../WelcomePage/WelcomePage';
+import Home from '../Home/Home';
 import Tables from '../Table/Table';
 import Cards from '../Cards/Cards';
 import Pokemons from '../Pokemons/Pokemons';
@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <Navigation />
           <Switch>
-            <Route exact path="/WelcomePage" component={WelcomePage} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/Table" component={Tables} />
             <Route exact path="/Cards" component={Cards} />
             <Route exact path="/Pokemons" component={Pokemons} />

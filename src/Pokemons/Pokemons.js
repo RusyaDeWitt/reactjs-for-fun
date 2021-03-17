@@ -1,22 +1,25 @@
 import { Component } from 'react'
+import { Table } from 'react-bootstrap';
 
 class Pokemons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemons: []
+      pokemons: [],
+      url: []
     };
   }
 
   componentDidMount(){
-    fetch("https://pokeapi.co/api/v2/berry-firmness/2/")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200")
 
     .then(res => res.json())
 
     .then(
       (res) => {
         this.setState({
-          pokemons: res.berries
+          pokemons: res.results,
+          url: res.results.url
         });
       },
       (error) => {
@@ -29,13 +32,20 @@ class Pokemons extends Component {
 
   render() {
       return(
-        <div>
-          <ul>
-            {this.state.pokemons.map(name=>(
-              <li>{name.name}</li>
-            ))}
-          </ul>
-        </div>
+        <Table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.pokemons.map(name=>(
+                <tr>
+                  <td>{name.name}</td>
+                </tr>
+          ))}
+        </tbody>
+        </Table>
       )
   }
 }

@@ -9,13 +9,13 @@ class Navigation extends Component {
         <Navbar bg="light" expand="lg">
           <Nav className="mr-auto">
             <Nav.Link>
-              <Link to="/WelcomePage">WelcomePage</Link>
+              <Link to="/">Home</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to="/Table"> Table</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/Cards"> Cards</Link>
+              <Link to="/Cards"> Jojo Family</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to="/Pokemons"> Pokemons</Link>

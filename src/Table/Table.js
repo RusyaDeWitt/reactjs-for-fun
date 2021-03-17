@@ -1,15 +1,19 @@
 import { Component } from 'react';
 import { Table } from 'react-bootstrap';
 
+
+
+
+
 class Tables extends Component {
   constructor(props){
     super(props)
-    var students : [] = []
+    var students2 : [] = []
     this.state ={
       name: "",
       surname: "",
       age: "",
-      students: students,
+      students: students2,
     }
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangeSurname = this.handleChangeSurname.bind(this)
@@ -59,18 +63,15 @@ class Tables extends Component {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
           </tr>
         </thead>
             <tbody>
-              <tr>
-                {this.state.students.map(personAttendendance => {
-                  return <td>{personAttendendance}</td>;
+                {this.state.students.map(students => {
+                  return <tr>{students}</tr>;
                 })}
-              </tr>
             </tbody>
       </Table>
       </div>
