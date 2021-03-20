@@ -1,39 +1,19 @@
-import { Component } from 'react'
+import React, { useEffect, useState , Component } from "react";
 import { Container , Row , Col , Jumbotron, Button, Modal} from 'react-bootstrap'
-
 import './Home.css'
 
 
 
 
-class Home extends  Component {
-    constructor(props){
-      super(props)
-      this.state = {
-          show: false,
-      }
-      this.handleShow = this.handleShow.bind(this)
-      this.handleClose = this.handleClose.bind(this)
-    }
+function Home() {
 
+    let [show, setShow] = useState(0)
+    const setOpen = () => setShow(1)
+    const setClose = () => setShow(0)
 
-    handleShow(){
-      this.setState({
-        show: true
-      })
-    }
-
-    handleClose(){
-      this.setState({
-        show: false
-      })
-    }
-
-  render(){
     return(
       <div>
-
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal show={show} onHide={setClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>
           </Modal.Header>
@@ -43,8 +23,8 @@ class Home extends  Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>Close</Button>
-            <Button variant="primary" onClick={this.handleClose}>Save changes</Button>
+            <Button variant="secondary" onClick={setClose}>Close</Button>
+            <Button variant="primary" onClick={setClose}>Save changes</Button>
           </Modal.Footer>
       </Modal>
 
@@ -56,7 +36,7 @@ class Home extends  Component {
             This is a simple web-app.
           </p>
           <p>
-          <Button variant="primary" onClick={this.handleShow}>Learn more</Button>
+          <Button variant="primary" onClick={setOpen}>Learn more</Button>
           </p>
       </Jumbotron>
 
@@ -68,16 +48,13 @@ class Home extends  Component {
               </Row>
             </Col>
             <Col>
-              <Row>
-              </Row>
-              <Row>
+            <Row>
               </Row>
             </Col>
           </Row>
         </Container>
       </div>
     )
-  }
 }
 
 export default Home;

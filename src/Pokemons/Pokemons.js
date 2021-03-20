@@ -1,36 +1,21 @@
-import { Component } from 'react'
+import React, { useEffect, useState , Component } from "react";
 import { Table } from 'react-bootstrap';
 
-class Pokemons extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemons: [],
-      url: []
-    };
-  }
+function Pokemons(){
 
-  componentDidMount(){
+  const [pokemons, setPokemons] = useState([])
+
+
+
+  useEffect(()=>{
     fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200")
-
     .then(res => res.json())
+    .then(res => {
+        setPokemons(res.results)
+    })
+  }, [])
 
-    .then(
-      (res) => {
-        this.setState({
-          pokemons: res.results,
-          url: res.results.url
-        });
-      },
-      (error) => {
-        this.setState({
-          error
-        });
-      }
-    )
-  }
 
-  render() {
       return(
         <Table>
         <thead>
@@ -39,7 +24,7 @@ class Pokemons extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.pokemons.map(name=>(
+          {pokemons.map(name=>(
                 <tr>
                   <td>{name.name}</td>
                 </tr>
@@ -47,7 +32,6 @@ class Pokemons extends Component {
         </tbody>
         </Table>
       )
-  }
 }
 
 export default Pokemons

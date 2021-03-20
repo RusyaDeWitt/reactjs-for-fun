@@ -1,82 +1,73 @@
-import { Component } from 'react';
+import React, { useEffect, useState , Component } from "react";
 import { Table } from 'react-bootstrap';
 
 
+function Tables() {
+  const [students, setStudents] = useState([]);
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [age, setAge] = useState("");
 
-
-
-class Tables extends Component {
-  constructor(props){
-    super(props)
-    var students2 : [] = []
-    this.state ={
-      name: "",
-      surname: "",
-      age: "",
-      students: students2,
-    }
-    this.handleChangeName = this.handleChangeName.bind(this)
-    this.handleChangeSurname = this.handleChangeSurname.bind(this)
-    this.handleChangeAge = this.handleChangeAge.bind(this)
-  }
-
-
-  handleChangeName(event){
+  const addItem = event => {
     event.preventDefault();
-    this.setState({
-      name: event.target.value
-    })
-  }
+    setStudents([...students,
+      {
+        id: students.length,
+        name: name,
+        surname: surname,
+        age: age
+      }
+    ]);
+    setName("");
+    setSurname("");
+    setAge("");
+    console.log(students)
+  };
+  return (
+    <div>
 
-  handleChangeSurname(event){
-    event.preventDefault();
-    this.setState({
-      surname: event.target.value
-    })
-  }
+        <label>
+          <input
+            name="name"
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <input
+            name="surname"
+            type="text"
+            value={surname}
+            onChange={e => setSurname(e.target.value)}
+          />
+          <input
+            name="age"
+            type="text"
+            value={age}
+            onChange={e => setAge(e.target.value)}
+          />
+        </label>
+        <button onClick={addItem}> Add </button>
 
-  handleChangeAge(event){
-    event.preventDefault();
-    this.setState({
-      age: event.target.value
-    })
-  }
-
-  render(){
-    var onSubmit = () => {
-      var students2 : [] = this.state.students
-      students2.push(this.state.students.push(this.state.name + "," + this.state.surname + "," + this.state.age))
-      this.setState({
-        students: students2
-      })
-      console.log(typeof this.state.students.push(this.state.name + "," + this.state.surname + "," + this.state.age))
-    }
-
-    return(
-      <div>
-        <input name="name" onChange={this.handleChangeName} value={this.state.name} />
-        <input name="surname" onChange={this.handleChangeSurname} value={this.state.surname} />
-        <input name="age" onChange={this.handleChangeAge} value={this.state.age} />
-        <button onClick={()=>{onSubmit()}}>submit</button>
-
-
-      <Table striped bordered hover>
-        <thead>
+        <Table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+        {students.map(student => (
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
+            <th>{student.name}</th>
+            <th>{student.surname}</th>
+            <th>{student.age}</th>
           </tr>
-        </thead>
-            <tbody>
-                {this.state.students.map(students => {
-                  return <tr>{students}</tr>;
-                })}
-            </tbody>
-      </Table>
-      </div>
-    )
-  }
+        ))}
+        </tbody>
+        </Table>
 
+    </div>
+  );
 }
 export default Tables
